@@ -16,7 +16,9 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: {  
+                    loader: 'babel-loader'
+                }
             },
             {
                 test: /\.css$/,
@@ -30,7 +32,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({
-            cleanAfterEveryBuildPatterns: [path.join(__dirname, buildDirectory)]
+            cleanOnceBeforeBuildPatterns: [path.join(__dirname, buildDirectory)]
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'
